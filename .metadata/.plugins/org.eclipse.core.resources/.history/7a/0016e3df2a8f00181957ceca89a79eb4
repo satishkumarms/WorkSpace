@@ -1,0 +1,89 @@
+package com.clients;
+
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.Query;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.classic.Session;
+
+import com.bean.Address;
+import com.bean.Complaint;
+import com.bean.Customer;
+import com.bean.Department;
+import com.bean.Employee;
+
+public class AdminClient {
+	private static SessionFactory sf;
+	static{
+		Configuration config = new Configuration();
+		config.configure("/hibernate.cfg.xml");
+		sf = config.buildSessionFactory();
+	}
+
+	public static void main(String[] args)
+	{/*
+		Employee emp1 = new Employee("shesha","shesha@gmail.com",null);
+		Address add1 = new Address("mg road","bangalore","karnataka","india", emp1);
+
+		emp1.setAddress(add1);*/
+
+
+		/*Department dept = new Department("IOT");
+		Session session = sf.openSession();
+
+		session.getTransaction().begin();
+		session.save(dept);
+		Query query = session.createQuery("select emp from Employee emp where emp.empId=?");
+	     query.setParameter(0, 1L);
+	    Employee emp = (Employee) query.uniqueResult();
+	    emp.setDept(dept);
+	    session.save(emp);
+
+
+
+		Query query = session.createQuery("select emp.address.city from Employee emp where emp.empId=?");
+
+		query.setParameter(0, 1L)
+	/*	session.save(emp1);
+
+		session.getTransaction().commit();*/
+
+
+		Customer customer = new Customer("satishkumarms","satishkumarms19@gmail.com",null);
+		Complaint complaint1 = new Complaint("404 error",convert("12/11/2018"),"no", customer);
+		Complaint complaint2 = new Complaint("405 error",convert("10/10/2017"),"no", customer);
+
+		List<Complaint> clist = new ArrayList<>();
+		clist.add(complaint1);
+		clist.add(complaint2);
+		Session session = sf.openSession();
+
+		session.getTransaction().begin();
+		session.save(complaint1);
+
+
+	}	
+
+
+
+
+	public static Date convert(String date)
+	{
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy");
+		Date sqlDate = null;
+		java.util.Date utilDate;
+		try {
+			utilDate = sdf.parse(date);
+			sqlDate = new Date(utilDate.getTime());
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+         return sqlDate;
+	}
+}

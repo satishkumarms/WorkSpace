@@ -1,0 +1,29 @@
+package com.casestudy.client;
+
+import com.casestudy.dao.AdminDaol;
+
+public class AdminClient {
+
+	
+	public static void main(String[] args)
+	{
+		AdminDaol admindaol = new AdminDaol();
+		if(admindaol.connectToDb())
+		{
+			System.out.println("connected");
+			if(admindaol.validateAdmin())
+			{
+				
+				System.out.println("Enter your option 1: to add user \n 2: to delete user \3 to generate bill");
+				
+				
+			}
+			else
+			{
+				System.out.println("Invalid id or password");
+			}
+		}
+		
+		
+	}
+}

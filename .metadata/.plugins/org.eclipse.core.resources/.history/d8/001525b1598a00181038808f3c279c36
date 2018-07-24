@@ -1,0 +1,40 @@
+package com.casestudy.client;
+
+import java.sql.SQLException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.casestudy.dao.UserDaol;
+
+public class UserClient extends HttpServlet {
+	
+	public static void main(String[] args) throws SQLException
+	{
+		
+		String username=request.getParameter("username");
+		String password=request.getParameter("password");
+		
+		UserDaol userdaol = new UserDaol();
+		if(userdaol.connectToDb())
+		{
+			System.out.println("connected");
+			userdaol.viewBookStore();
+			userdaol.addBooksToCart();
+			
+			/*if(userdaol.validateUser())
+			{
+			   System.out.println("user login was successful");	
+			}
+			else
+			{
+				System.out.println("Invalid userid or password");	
+
+			}*/
+		}
+	}
+
+}

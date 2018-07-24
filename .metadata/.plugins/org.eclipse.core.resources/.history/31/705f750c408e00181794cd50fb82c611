@@ -1,0 +1,21 @@
+package com.clients;
+
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+public class BookClient {
+
+	private static SessionFactory sf;
+	static{
+		Configuration config = new Configuartion();
+		config.configure("/hibernate.cfg.xml");
+		sf=config.buildSessionFactory();
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	
+		
+	}
+
+}

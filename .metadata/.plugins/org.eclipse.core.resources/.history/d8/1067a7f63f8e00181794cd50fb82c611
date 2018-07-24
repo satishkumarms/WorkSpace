@@ -1,0 +1,14 @@
+package com.clients;
+
+import org.hibernate.SessionFactory;
+
+public class BookClient {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		private static SessionFactory sessionFactory;
+		
+	}
+
+}

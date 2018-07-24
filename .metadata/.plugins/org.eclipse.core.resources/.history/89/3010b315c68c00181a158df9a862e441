@@ -1,0 +1,17 @@
+package com.servlets;
+
+import com.servlets.dao.MovieDao;
+import com.servlets.dao.MovieDaoImpl;
+import com.servlets.service.MovieService;
+
+public class MovieServiceImpl implements MovieService {
+	
+	
+	private MovieDao mDao;
+	
+	public MovieServiceImpl()
+	{
+		mDao = new MovieDaoImpl();
+	}
+
+}

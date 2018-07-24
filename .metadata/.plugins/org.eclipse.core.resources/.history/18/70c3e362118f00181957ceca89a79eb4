@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        
+<hibernate-mapping>
+   <class name="com.bean.Employee" table="employee1">  
+          <id name="empId">  
+              <generator class="increment"></generator>  
+          </id>  
+          <property name="name"></property>  
+          <property name="email"></property>  
+            
+          <one-to-one name="address" cascade="all"></one-to-one>  
+          <many-to-one name="department" cascade="all"></many-to-one>
+   </class>  
+          
+   <class name="com.bean.Address" table="address1">  
+        <id name="addressId">  
+          <generator class="foreign">  
+          <param name="property">employee</param>  
+          </generator>  
+          </id>   
+          <property name="addressLine1"></property>  
+          <property name="city"></property>  
+          <property name="state"></property>  
+          <property name="country"></property>  
+            <one-to-one name="employee"></one-to-one>  
+    </class>  
+    
+     <class name="com.bean.Department" table="department1">  
+          <id name="depId">  
+              <generator class="increment"></generator>  
+          </id>  
+          <property name="name"></property>  
+                
+           
+   </class> 
+    
+    
+</hibernate-mapping>
+        

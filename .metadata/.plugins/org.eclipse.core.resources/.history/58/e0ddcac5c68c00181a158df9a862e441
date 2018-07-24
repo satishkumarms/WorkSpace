@@ -1,0 +1,18 @@
+package com.servlets.dao;
+
+import com.servlets.bean.UserBean;
+
+public class MovieDaoImpl implements MovieDao {
+
+	@Override
+	public boolean authenticate(UserBean uBean) {
+		// TODO Auto-generated method stub
+		boolean valid = false;
+		
+		return false;
+	}
+	
+	
+	
+
+}

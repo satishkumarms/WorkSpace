@@ -1,0 +1,9 @@
+package com.servlets.dao;
+
+import com.servlets.bean.UserBean;
+
+public interface MovieDao {
+
+	void authenticate(UserBean uBean);
+
+}

@@ -1,0 +1,11 @@
+package com.casestudy.interfaces;
+
+import java.util.HashMap;
+
+import com.casestudy.model.Book;
+
+public interface BookStoreInterface {
+
+	public HashMap<String, Book> viewBookStore();
+	public void addBooksToCart();
+}

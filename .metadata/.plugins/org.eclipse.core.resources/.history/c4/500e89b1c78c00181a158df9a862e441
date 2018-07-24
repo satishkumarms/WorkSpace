@@ -1,0 +1,30 @@
+package com.servlets.util;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class DBUtil {
+
+	
+	private static Connection conn;
+	public static Connection getConnection() {
+		// TODO Auto-generated method stub
+		if(conn==null)
+		{
+			try {
+				Class.forName("jdbc:oracle:thin:@localhost:1521:XE");
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			connection = DriverManager.getConnection("oracle.jdbc.driver.OracleDriver","satishkumar","satishkumarms");
+			
+		}
+		
+		return conn;
+	}
+
+	
+	
+	
+}

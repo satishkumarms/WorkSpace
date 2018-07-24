@@ -1,0 +1,45 @@
+package com.servlets.bean;
+
+public class UserBean {
+
+	private String user;
+	private String password;
+	private String type;
+	
+	
+	
+	public UserBean() {
+		super();
+	}
+	public String getUser() {
+		return user;
+	}
+	
+	
+	public UserBean(String user, String password) {
+		super();
+		this.user = user;
+		this.password = password;
+	
+	}
+	public void setUser(String user) {
+		this.user = user;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	
+	
+	
+	
+}

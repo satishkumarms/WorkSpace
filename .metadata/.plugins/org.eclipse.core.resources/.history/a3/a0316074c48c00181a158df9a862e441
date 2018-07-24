@@ -1,0 +1,5 @@
+package com.servlets.dao;
+
+public class MovieDaoImpl implements MovieDao {
+
+}

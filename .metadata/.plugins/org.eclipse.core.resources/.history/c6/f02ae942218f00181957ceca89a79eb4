@@ -1,0 +1,11 @@
+package com.bean;
+
+import java.sql.Date;
+
+public class Complaint {
+
+	private Long complaintId;
+	private String complaintDetails;
+	private Date date;
+	private String status;
+}

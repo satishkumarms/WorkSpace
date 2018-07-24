@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.bean.BookNew"  table="booknew"
+		lazy="false">
+
+		<id name="isbn" column="isbn" >
+			<generator class="assigned">  <!-- class="native" if it is autoincremented -->
+			</generator>
+		</id>
+
+		<property name="name" type="string" column="name" not-null="true"/>
+	<property name="price" type="double" column="price" not-null="false"/>
+	<property name="stock" type="long" column="stock" not-null="false"/>
+	</class>
+</hibernate-mapping>

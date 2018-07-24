@@ -1,0 +1,10 @@
+package com.casestudy.interfaces;
+
+public interface AdminInterface {
+	
+	public Boolean validateAdmin();
+	public Admin validateAdmin();
+	public void addUser();
+	public Boolean validateSuperAdmin();
+
+}

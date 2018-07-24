@@ -1,0 +1,48 @@
+<%@page import="com.casestudy.model.Cart"%>
+<%@page import="com.casestudy.model.Book"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form>
+	<table border="1">
+		<tr>
+			<td>BOOK NAME</td>
+			<td>BOOK ISBN</td>
+			<td>BOOK STOCK</td>
+			<td>BOOK AUTHOR</td>
+			<td>BOOK PRICE</td>
+		</tr>
+
+		<% session = request.getSession(false);
+		
+		Cart cart = (Cart) session.getAttribute("cart"); 
+		List<Book> cartbooks = (List<Book>) cart.getBooklist();
+		for(Book book : cartbooks)
+{
+System.out.println("bookname: "+book.getName());
+%>
+
+
+		<tr>
+			<th><%= book.getName() %></th>
+			<th><%= book.getIsbn() %></th>
+			<th><%= book.getStock() %></th>
+			<th><%= book.getAuthor() %></th>
+			<th><%= book.getPrice() %></th>
+
+		</tr>
+		<% } %>
+	</table>
+	<input type="submit" value="generatebill" name="buy">
+	<a href="LoginPage.html">LOG OUT</a>
+	<input type="hidden" value="signout" name="signout">
+	</form>
+</body>
+</html>

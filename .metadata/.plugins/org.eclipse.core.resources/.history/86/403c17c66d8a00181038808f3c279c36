@@ -1,0 +1,87 @@
+package com.servlets;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.casestudy.dao.AdminDaol;
+import com.casestudy.dao.UserDaol;
+import com.casestudy.model.User;
+
+
+
+
+
+public class HelloServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+
+		PrintWriter out = response.getWriter();
+
+
+		String username=request.getParameter("username");
+		String password=request.getParameter("password");
+		String role=request.getParameter("role");
+		if(role.equals("user"))
+		{ 
+			UserDaol userdaol = new UserDaol();
+			if(userdaol.connectToDb())
+			{
+			   User user = userdaol.validateUser(username, password);
+			   System.out.println(user.getUsername());
+			   if(user.equals(username) && user.equals(password))
+			   {
+				   out.println("<h2> valid user or password</h2>");
+			   }
+			   else
+			   {
+				   out.println("<h2>  invalid user or password</h2>");
+			   }
+			   
+			}
+			
+		}
+		else
+		{
+			AdminDaol admindaol = new AdminDaol();
+			if(admindaol.connectToDb())
+			{
+				//System.out.println("connected");
+				if(admindaol.validateAdmin(username,password))
+				{
+					
+					
+					admindaol.addUser();
+					admindaol.deleteUser();
+					
+				}
+				else
+				{
+					System.out.println("Invalid id or password");
+				}
+			}
+		}
+
+
+
+
+		
+		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

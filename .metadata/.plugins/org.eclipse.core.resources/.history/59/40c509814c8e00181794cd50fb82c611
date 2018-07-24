@@ -1,0 +1,58 @@
+package com.clients;
+
+import java.sql.Date;
+import java.util.List;
+
+import org.hibernate.Query;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.classic.Session;
+
+import com.bean.BookNew;
+
+public class BookClient {
+
+	private static SessionFactory sf;
+	static{
+		Configuration config = new Configuration();
+		config.configure("/hibernate.cfg.xml");
+		sf = config.buildSessionFactory();
+	}
+	
+	public boolean addBook(String isbn,String title,String author,Double price,Long stock,Date dOP)
+	{
+		Session session = sf.openSession();
+		BookNew book = new BookNew(isbn, title, author, price, stock, dOP);
+		session.save(book);
+		session.flush();
+		return true;
+	}
+	public List<BookNew> getBooks()
+	{
+		Session session = sf.openSession();
+		Query query = session.createQuery("from BookNew");
+		return query.list();
+		
+	}
+	public boolean deleteBook(String isbn)
+	{
+		Session session = sf.openSession();
+		BookNew bookDeleted = (BookNew) session.get(BookNew.class, isbn); 
+		if(bookDeleted==null)
+		{
+			return false;
+		}
+		session.delete(bookDeleted);
+		session.flush();
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+  BookClient bc = new BookClient();
+  //  bc.addBook("1235", "title2", "author2", 2001.00, 20L, null);
+  System.out.println(bc.getBooks().toString());
+	
+		
+	}
+
+}

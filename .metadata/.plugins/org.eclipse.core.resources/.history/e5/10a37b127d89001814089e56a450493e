@@ -1,0 +1,87 @@
+package com.casestudy.dao;
+
+import com.casestudy.interfaces.AdminInterface;
+import com.casestudy.model.Admin;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+public class AdminDaol implements AdminInterface{
+
+	private Connection connection;
+	private String dbStringUrl = "jdbc:oracle:thin:@localhost:1521:XE";
+
+	private Admin admin;
+
+	public AdminDaol() {
+		admin = new Admin();
+	}
+
+	public Boolean connectToDb()
+	{
+		try {
+			//load the Driver Class
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		//get the DB connection
+		try {
+			connection = DriverManager.getConnection(dbStringUrl, "satishkumar", "satishkumarms");
+			if(connection!=null)
+			{
+				System.out.println("connection successfull");
+			}
+			else
+			{
+				System.out.println("Could not connect");
+				return false;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return true;
+	}
+
+	public Boolean validateAdmin()
+	{
+		System.out.println("Enter the ADMIN-username");
+		admin.setAdminname(new Scanner(System.in).next());
+		System.out.println("Enter the ADMIN-password");
+		admin.setAdminpass(new Scanner(System.in).next());
+
+		String searchQuery = "select username from login where username=? and userpass=? and role='admin'";
+		try 
+		{
+			PreparedStatement pstmt = connection.prepareStatement(searchQuery);
+			pstmt.setString(1, admin.getAdminname());
+			pstmt.setString(2, admin.getAdminpass());
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next())
+			{
+				if(rs.getString(1).equals(admin.getAdminname()))
+				{
+					System.out.println("admin login was successful");
+					return true;
+					
+				}
+
+			}
+
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return false;
+	}
+}

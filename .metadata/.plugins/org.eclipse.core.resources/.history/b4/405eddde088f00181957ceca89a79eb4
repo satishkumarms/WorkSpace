@@ -1,0 +1,16 @@
+package com.clients;
+
+import com.bean.Address;
+import com.bean.Employee;
+
+public class AdminClient {
+
+	public static void main(String[] args)
+	{
+		Employee emp1 = new Employee("shesha","shesha@gmail.com",null);
+		Address add1 = new Address("mg road","bangalore","karnataka","india", emp1);
+		
+	}
+	
+	
+}

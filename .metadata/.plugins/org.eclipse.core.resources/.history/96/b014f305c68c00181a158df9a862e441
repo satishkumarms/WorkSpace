@@ -1,0 +1,5 @@
+package com.servlets.dao;
+
+public interface MovieDao {
+
+}

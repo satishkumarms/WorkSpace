@@ -1,0 +1,5 @@
+package com.servlets.bean;
+
+public class UserBean {
+
+}

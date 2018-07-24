@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="HibernateDemos">
+        <property name="context-root" value="HibernateDemos"/>
+        <property name="java-output-path" value="/HibernateDemos/build/classes"/>
+    </wb-module>
+</project-modules>

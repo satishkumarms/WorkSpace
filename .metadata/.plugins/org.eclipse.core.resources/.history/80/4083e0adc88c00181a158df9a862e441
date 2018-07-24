@@ -1,0 +1,24 @@
+package com.servlets.dao;
+
+import java.sql.Connection;
+
+import com.servlets.bean.UserBean;
+import com.servlets.util.DBUtil;
+
+public class MovieDaoImpl implements MovieDao {
+
+	@Override
+	public boolean authenticate(UserBean uBean) {
+		// TODO Auto-generated method stub
+		boolean valid = false;
+		
+		Connection conn = DBUtil.getConnection();
+		System.out.println("con" + conn);
+		
+		return false;
+	}
+	
+	
+	
+
+}

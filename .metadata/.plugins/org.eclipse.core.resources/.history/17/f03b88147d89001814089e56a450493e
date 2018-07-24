@@ -1,0 +1,26 @@
+package com.casestudy.client;
+
+import com.casestudy.dao.AdminDaol;
+
+public class AdminClient {
+
+	
+	public static void main(String[] args)
+	{
+		AdminDaol admindaol = new AdminDaol();
+		if(admindaol.connectToDb())
+		{
+			System.out.println("connected");
+			if(admindaol.validateAdmin())
+			{
+				System.out.println("admin login was successful");
+			}
+			else
+			{
+				System.out.println("Invalid id or password");
+			}
+		}
+		
+		
+	}
+}
